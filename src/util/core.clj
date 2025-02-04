@@ -45,7 +45,7 @@
            (tarai (dec y) z x)
            (tarai (dec z) x y))))
 
-(defn memoized-tarai [x y z]
+(defn tarai-memo [x y z]
   (let [memo (atom {})]
     (letfn [(tarai [x y z]
               (or (get @memo [x y z])
@@ -58,7 +58,7 @@
                       result))))]
       (tarai x y z))))
 
-(defn lazy-tarai [x y z]
+(defn tarai-lazy [x y z]
   (letfn [(tarai [fx fy fz]
             (if (<= (fx) (fy))
               (fy)
@@ -66,3 +66,14 @@
                      (fn [] (tarai (fn [] (- (fy) 1)) fz fx))
                      (fn [] (tarai (fn [] (- (fz) 1)) fx fy)))))]
     (tarai (fn [] x) (fn [] y) (fn [] z))))
+
+(comment
+  (time (tarai      15 5 0))
+  ;=> "Elapsed time: 7168.374709 msecs"
+
+  (time (tarai-memo 15 5 0))
+  ;=> "Elapsed time: 2.520583 msecs"
+
+  (time (tarai-lazy 15 5 0))
+  ;=> "Elapsed time: 3.412042 msecs"
+  :rcf)
