@@ -6,6 +6,8 @@ Under construction.
 
 - learn how to use.
 - more utils.
+- difference between tags x.y.z and  x.y.z^{}.
+- citerium or other benchmark utils in `dev` namespace.
 
 
 ## v0.1.0 - 2025-02-04
