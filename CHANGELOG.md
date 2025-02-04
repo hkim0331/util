@@ -5,6 +5,9 @@ Under construction.
 ## [Unreleased]
 
 
+## 0.0.2 - 2025-02-04
+
+- start to work
 
 ## 0.0.1 - 2025-02-04
 
