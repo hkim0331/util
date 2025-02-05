@@ -8,7 +8,12 @@ Under construction.
 - more utils.
 - difference between tags x.y.z and  x.y.z^{}.
 - citerium or other benchmark utils in `dev` namespace.
+- when exec `just dev`, `user.clj` is loaded and evaluated before REPL starts.
 
+
+## v0.3.0 / 2025-02-05
+
+- changed name of receipies. 'dev', 'dev-container'.
 
 ## v0.1.0 - 2025-02-04
 

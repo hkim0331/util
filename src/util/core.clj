@@ -86,13 +86,3 @@
                      (fn [] (tarai (fn [] (- (fz) 1)) fx fy)))))]
     (tarai (fn [] x) (fn [] y) (fn [] z))))
 
-(comment
-  (time (tarai      15 5 0))
-  ;=> "Elapsed time: 7168.374709 msecs"
-
-  (time (tarai-memo 15 5 0))
-  ;=> "Elapsed time: 2.520583 msecs"
-
-  (time (tarai-lazy 15 5 0))
-  ;=> "Elapsed time: 3.412042 msecs"
-  :rcf)

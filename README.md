@@ -4,19 +4,32 @@ Learn how to use remote clojure libraries.
 
 forge utils in `scratch` (or the `develop` branch?) then copy them here.
 
+## Dependency
 
-## Start
+```
+io.github.hkim0331/util {:git/tag "v0.1.0" :git/sha "3386ffd"}
+```
 
-    % neil new app util
-    % cd util
-    % neil dep update
+## Usage
 
+Initialize
 
-## Url
+```clojure
+(require '[util.core :as u]
+         '[util.bench :as b])
+```
 
-Download from https://github.com/hkim0331/util.git
+Use:
 
-## develop
+```
+(u/factor-integer 100)
+; =>
+
+(b/time+ (u/tarai-lazy 15 5 5))
+;=>
+```
+
+## Start REPL
 
     % clojure -M:dev -m nrepl.cmdline
     or
@@ -24,26 +37,6 @@ Download from https://github.com/hkim0331/util.git
     or dev container,
     % just dev-container
 
-
-## Usage
-
-- deps.edn:
-
-```
-:deps io.github.hkim0331/util
-    {:git/tag "v0.0.1" :git/sha "c611b0b"}}
-```
-
-check the latest tag and sha value.
-
-
-- \*.clj
-
-```clojure
-(require
- '[util.core :as u]
- '[util.bench :as bench])
-```
 
 
 ## Options
