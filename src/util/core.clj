@@ -1,5 +1,24 @@
 (ns util.core)
 
+; factor integer
+(defn- fi-aux [n d ret]
+  (cond
+    (= n 1) ret
+    (< n (* d d)) (conj ret n)
+    (zero? (rem n d)) (recur (quot n d) d (conj ret d))
+    :else (recur n (inc (inc d)) ret)))
+
+(defn- div-2 [n ret]
+  (if (zero? (rem n 2))
+    (recur (quot n 2) (conj ret 2))
+    [n ret]))
+
+(defn factor-integer [n]
+  (if (< n 2)
+    [n]
+    (let [[n ret] (div-2 n [])]
+      (fi-aux n 3 ret))))
+
 ;; primes
 ;; Excerpted from "Programming Clojure, Third Edition",
 ;; published by The Pragmatic Bookshelf.

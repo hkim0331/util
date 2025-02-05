@@ -2,12 +2,16 @@
 
 Learn how to use remote clojure libraries.
 
-##
+forge utils in `scratch` (or the `develop` branch?) then copy them here.
+
+
+## Start
+
     % neil new app util
     % cd util
     % neil dep update
 
-## Installation
+## Url
 
 Download from https://github.com/hkim0331/util.git
 
