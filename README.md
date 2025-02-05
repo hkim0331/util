@@ -11,13 +11,40 @@ forge utils in `scratch` (or the `develop` branch?) then copy them here.
     % cd util
     % neil dep update
 
+
 ## Url
 
 Download from https://github.com/hkim0331/util.git
 
+## develop
+
+    % clojure -M:dev -m nrepl.cmdline
+    or
+    % just nrepl
+    or dev container,
+    % just dev-container
+
+
 ## Usage
 
-FIXME: explanation
+- deps.edn:
+
+```
+:deps io.github.hkim0331/util
+    {:git/tag "v0.0.1" :git/sha "c611b0b"}}
+```
+
+check the latest tag and sha value.
+
+
+- \*.clj
+
+```clojure
+(require
+ '[util.core :as u]
+ '[util.bench :as bench])
+```
+
 
 ## Options
 
