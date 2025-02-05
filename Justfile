@@ -2,10 +2,10 @@
 help:
 	just --list
 
-nrepl:
+dev:
 	clojure -M:dev -m nrepl.cmdline
 
-nrepl-docker:
+dev-container:
 	clojure -M:dev -m nrepl.cmdline -b 0.0.0.0 -p 7777
 
 format_check:
