@@ -6,14 +6,13 @@ Under construction.
 
 - learn how to use.
 - more utils.
-- difference between tags x.y.z and  x.y.z^{}.
-- citerium or other benchmark utils in `dev` namespace.
-- when exec `just dev`, `user.clj` is loaded and evaluated before REPL starts.
+- git/sha is updated before finish comitting.
 
-
-## v0.3.0 / 2025-02-05
+## v0.2.0 / 2025-02-05
 
 - changed name of receipies. 'dev', 'dev-container'.
+- bump-version.sh
+
 
 ## v0.1.0 - 2025-02-04
 
