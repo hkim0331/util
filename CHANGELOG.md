@@ -6,7 +6,8 @@ Under construction.
 
 - learn how to use.
 - more utils.
-- git/sha is updated before finish comitting.
+- git/sha is determined at push time, master branch to GITHUB.
+  how to reflect the :git/sha value into updated README.md?
 
 ## v0.2.0 / 2025-02-05
 
