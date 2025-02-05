@@ -1,10 +1,22 @@
-(ns util.core)
+(ns util.core
+  (:require [clojure.math :as math]))
+
+; even?/odd?
+(defn even?
+  "can not use `bit-and` for doubles."
+  [n]
+  (zero? (rem n 2)))
+
+(defn odd? [n]
+  (not (even? n)))
 
 ; factor integer
 (defn- fi-aux [n d ret]
   (cond
-    (= n 1) ret
-    (< n (* d d)) (conj ret n)
+    ;;(= n 1) ret
+    (< n (* d d)) (if (= n 1)
+                    ret
+                    (conj ret n))
     (zero? (rem n d)) (recur (quot n d) d (conj ret d))
     :else (recur n (inc (inc d)) ret)))
 
@@ -18,6 +30,37 @@
     [n]
     (let [[n ret] (div-2 n [])]
       (fi-aux n 3 ret))))
+
+; prime?
+; FIXME: why using factor-integer is fast?
+(defn prime? [n]
+  (if (< n 3)
+    (= n 2)
+    (= [n] (factor-integer n))))
+
+; (defn prime?-slow [n]
+;   (cond
+;     (< n 3) (= n 2)
+;     (even? n) false
+;     (some #(zero? (rem n %)) (range 3 (math/sqrt n) 2)) false
+;     :else true))
+
+(defn- prime?-aux [n d]
+  (cond
+    ;;(= n 1) ret
+    (< n (* d d)) true
+    (zero? (rem n d)) false
+    :else (recur n (inc (inc d)))))
+
+(defn prime?-slow [n]
+  (cond
+    (< n 3) (= n 2)
+    (even? n) false
+    :else (let [[n _] (div-2 n [])]
+            (prime?-aux n 3))))
+
+; cartesian product
+; divisors
 
 ;; primes
 ;; Excerpted from "Programming Clojure, Third Edition",

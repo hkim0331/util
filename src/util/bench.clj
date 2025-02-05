@@ -1,4 +1,16 @@
-(ns util.bench)
+(ns util.bench
+  (:require [criterium.core :refer [with-progress-reporting quick-bench]]))
+
+#_(defmacro quick [expr]
+    `(with-progress-reporting
+       (quick-bench ~expr :verbose)))
+
+(defmacro with-progress [expr]
+  `(with-progress-reporting
+     (quick-bench ~expr))) ; without :verbose
+
+(defmacro quick [expr]
+  `(quick-bench ~expr)) ; without progress reporting)
 
 (let [time*
       (fn [^long duration-in-ms f]
