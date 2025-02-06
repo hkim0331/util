@@ -4,6 +4,33 @@
    [util.core :as u]
    [util.bench :as b]))
 
+(time (u/factor-integer 203269561935987))
+(<  203269561935987 (u/power 2 55))
+(time (u/factor-integer (- (u/power 2 55) 1)))
+
+(comment
+  (defn count-primes [f start end]
+    (count (filter f (range start end))))
+
+  (def end (u/power 2N 55))
+  (def start (- end 100))
+  (time (map u/factor-integer (range start end)))
+
+  (time (u/factor-integer 203269561935987))
+  (count (u/factor-integer start))
+  (b/time+ (count-primes u/prime? start end))
+  (b/time+ (count-primes u/prime?-slow start end))
+
+  (count-primes u/prime? start end)
+  (count-primes u/prime?-slow start end)
+  (def inc2 (comp inc inc))
+
+  ((comp inc inc) 4)
+
+  (inc2 4)
+  (inc2 10)
+  :rcf)
+
 (comment
   (map u/prime? (range 10))
   (b/time+ (u/prime? (- (m/pow 2 31) 1)))
@@ -31,4 +58,4 @@
 
   :rcf)
 
-(println "dev/user.clj loaded")
+; (println "dev/user.clj loaded")

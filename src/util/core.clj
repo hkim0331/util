@@ -1,19 +1,21 @@
 (ns util.core
   (:require [clojure.math :as math]))
 
-; even?/odd?
-(defn even?
-  "can not use `bit-and` for doubles."
-  [n]
-  (zero? (rem n 2)))
+; power
+; (pow a b) returns double.
+; (power n m) returns int.
 
-(defn odd? [n]
-  (not (even? n)))
+(defn sq [x] (* x x))
+
+(defn power [base n]
+  (cond
+    (zero? n) 1
+    (even? n) (sq (power base (quot n 2)))
+    :else (* base (power base (dec n)))))
 
 ; factor integer
 (defn- fi-aux [n d ret]
   (cond
-    ;;(= n 1) ret
     (< n (* d d)) (if (= n 1)
                     ret
                     (conj ret n))
@@ -33,7 +35,7 @@
 
 ; prime?
 ; FIXME: why using factor-integer is fast?
-(defn prime? [n]
+(defn prime?-using-factor-integer [n]
   (if (< n 3)
     (= n 2)
     (= [n] (factor-integer n))))
@@ -47,19 +49,32 @@
 
 (defn- prime?-aux [n d]
   (cond
-    ;;(= n 1) ret
     (< n (* d d)) true
     (zero? (rem n d)) false
     :else (recur n (inc (inc d)))))
 
-(defn prime?-slow [n]
+(defn prime? [n]
   (cond
     (< n 3) (= n 2)
     (even? n) false
     :else (let [[n _] (div-2 n [])]
             (prime?-aux n 3))))
 
+; (defn- prime-sub? [i n rt]
+;   (if (or (zero? (rem n i)) (zero? (rem n (+ i 2))))
+;     false
+;     )
+; (defn prime? [n]
+;   (cond
+;     (= n 2) true
+;     (= n 3) true
+;     (= n 5) true
+;     (zero? (rem n 2)) false
+;     (zero? (rem n 3)) false
+;     :else (prime-sub?
+
 ; cartesian product
+
 ; divisors
 
 ;; primes

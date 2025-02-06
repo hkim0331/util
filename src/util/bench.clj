@@ -56,14 +56,14 @@
     (format "Used: %.0f/%.0f MB (%.0f%%), free: %.0f MB" used total (/ used total 0.01)
             (/ (.freeMemory (Runtime/getRuntime)) 1e6))))
 
-(defmacro debugging-tools []
-  '(do
-     (require '[clj-async-profiler.core :as prof])
-     (require '[clj-java-decompiler.core :refer [decompile]])
-     (require '[clj-memory-meter.core :as mm])
+; (defmacro debugging-tools []
+;   '(do
+;      (require '[clj-async-profiler.core :as prof])
+;      (require '[clj-java-decompiler.core :refer [decompile]])
+;      (require '[clj-memory-meter.core :as mm])
 
-     (.refer *ns* 'time+ #'user/time+)
-     (.refer *ns* 'heap #'user/heap)))
+;      (.refer *ns* 'time+ #'user/time+)
+;      (.refer *ns* 'heap #'user/heap)))
 
 (comment
   (debugging-tools)
