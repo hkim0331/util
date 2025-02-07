@@ -4,7 +4,8 @@
    [clojure.math.combinatorics :as combo]
    [clj-reload.core :as reload]
    [util.core :as u]
-   [util.bench :as b]))
+   [util.bench :as b]
+   util.core-test))
 
 (comment
   (reload/reload)
