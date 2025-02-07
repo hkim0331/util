@@ -80,13 +80,26 @@
       (concat d1 (rest d2))
       (concat d1 d2))))
 
-(reduce + (divisors 203269561935987))
+(time (divisors 203269561935987))
+; 214ms
+
+(defn- factor-expand
+  "(2 2 2)=>(1 2 4 8)
+   (3)=>(1 3)"
+  [coll]
+  (map #(power (first coll) %) (range (inc (count coll)))))
+
+(map (fn [[x y]] (* x y)) [[1 2] [3 4]])
 
 (defn divisors' [n]
   (->> (factor-integer n)
-       (partition-by identity)))
+       (partition-by identity)
+       (map factor-expand)
+       (apply combo/cartesian-product)
+       (map (fn [[x y]] (* x y)))))
 
-(apply combo/cartecian-products (divisors' 203269561935987))
+(time (divisors' 203269561935987))
+; 38ms
 
 ;; primes
 ;; Excerpted from "Programming Clojure, Third Edition",

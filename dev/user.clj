@@ -1,9 +1,13 @@
 (ns user
   (:require
    [clojure.math :as math]
+   [clojure.math.combinatorics :as combo]
    [clj-reload.core :as reload]
    [util.core :as u]
    [util.bench :as b]))
+
+(comment
+  :rcf)
 
 (comment
   (b/time+  (reduce + (u/divisors 203269561935987)))
