@@ -4,7 +4,6 @@
 ; power
 ; (pow a b) returns double.
 ; (power n m) returns int.
-
 (defn sq [x] (* x x))
 
 (defn power [base n]
@@ -14,6 +13,11 @@
     :else (* base (power base (dec n)))))
 
 ; factor integer
+(defn- div-multi-by-2 [n ret]
+  (if (zero? (rem n 2))
+    (recur (quot n 2) (conj ret 2))
+    [n ret]))
+
 (defn- fi-aux [n d ret]
   (cond
     (< n (* d d)) (if (= n 1)
@@ -22,31 +26,13 @@
     (zero? (rem n d)) (recur (quot n d) d (conj ret d))
     :else (recur n (inc (inc d)) ret)))
 
-(defn- div-2 [n ret]
-  (if (zero? (rem n 2))
-    (recur (quot n 2) (conj ret 2))
-    [n ret]))
-
 (defn factor-integer [n]
   (if (< n 2)
     [n]
-    (let [[n ret] (div-2 n [])]
-      (fi-aux n 3 ret))))
+    (let [[m ret] (div-multi-by-2 n [])]
+      (fi-aux m 3 ret))))
 
 ; prime?
-; FIXME: why using factor-integer is fast?
-(defn prime?-using-factor-integer [n]
-  (if (< n 3)
-    (= n 2)
-    (= [n] (factor-integer n))))
-
-; (defn prime?-slow [n]
-;   (cond
-;     (< n 3) (= n 2)
-;     (even? n) false
-;     (some #(zero? (rem n %)) (range 3 (math/sqrt n) 2)) false
-;     :else true))
-
 (defn- prime?-aux [n d]
   (cond
     (< n (* d d)) true
@@ -57,33 +43,32 @@
   (cond
     (< n 3) (= n 2)
     (even? n) false
-    :else (let [[n _] (div-2 n [])]
+    :else (let [[n _] (div-by-2 n [])]
             (prime?-aux n 3))))
 
-(defn- divide-1-5? [n i]
-  (println n (+ i 1) (+ i 5))
-  (or (zero? (rem n (+ i 1)))
-      (zero? (rem n (+ i 5)))))
+(defn- prime'-aux [n i]
+  (or (zero? (rem n i))
+      (zero? (rem n (+ i 2)))))
 
-(defn prime' [n]
+(defn prime'
+  "take twice time than `prime?`. maybe every? is slow?"
+  [n]
   (cond
     (< n 6) (or (= n 2) (= n 3) (= n 5))
     (zero? (rem n 2)) false
     (zero? (rem n 3)) false
-    :else (or (map #(divide-1-5? n %) (range 6 (+ (math/sqrt n) 2) 6)))))
+    :else (every? false? (map #(prime'-aux n %) (range 5 (+ (math/sqrt n) 1) 6)))))
 
-(prime' 25)
-(divide-1-5? 25 6)
-(prime? 25)
+; next-prime
+
 (defn next-prime
   "return the smallest prime number larger than `n`."
   [n]
   (-> (drop-while (complement prime?) (iterate inc (+ 1 n)))
       first))
 
-; (- (next-prime (power 2 32)) (power 2 32))
-
 ; cartesian product
+; math.
 
 ; divisors
 
