@@ -6,7 +6,7 @@
    [util.bench :as b]))
 
 (comment
-
+  (b/time+  (reduce + (u/divisors 203269561935987)))
   (def start (u/power 2 32))
   (def end (+ start 1000))
   (def rng (range start end))

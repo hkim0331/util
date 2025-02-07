@@ -69,7 +69,7 @@
       first))
 
 ; cartesian product
-; math.
+; combo/cartesian-product
 
 ; divisors
 
@@ -79,6 +79,14 @@
     (if (= (last d1) (first d2))
       (concat d1 (rest d2))
       (concat d1 d2))))
+
+(reduce + (divisors 203269561935987))
+
+(defn divisors' [n]
+  (->> (factor-integer n)
+       (partition-by identity)))
+
+(apply combo/cartecian-products (divisors' 203269561935987))
 
 ;; primes
 ;; Excerpted from "Programming Clojure, Third Edition",
