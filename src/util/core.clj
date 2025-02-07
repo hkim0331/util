@@ -76,18 +76,18 @@
 ; combo/cartesian-product
 
 ; divisors
-
-(defn divisors [n]
+; oridinaly definition
+(defn divisors-old [n]
   (let [d1 (filter #(zero? (rem n %)) (range 1 (+ 1 (math/sqrt n))))
         d2 (map #(quot n %) (reverse d1))]
     (if (= (last d1) (first d2))
       (concat d1 (rest d2))
       (concat d1 d2))))
 
-(comment
-  (time (divisors 203269561935987))
-  ; 214ms
-  :rcf)
+; (comment
+;   (time (divisors-old 203269561935987))
+;   ; 214ms
+;   :rcf)
 
 (defn- factor-expand
   "(2 2 2)=>(1 2 4 8)
@@ -95,7 +95,7 @@
   [coll]
   (map #(power (first coll) %) (range (inc (count coll)))))
 
-(defn divisors' [n]
+(defn divisors [n]
   (->> (factor-integer n)
        (partition-by identity)
        (map factor-expand)
@@ -103,9 +103,9 @@
        (map (fn [[x y]] (* x y)))))
 
 (comment
-  (time (divisors' 203269561935987))
+  (time (divisors 203269561935987))
   ; 38ms
-  (divisors' 80)
+  (time (divisors (- (power 2 29) 1)))
   :rcf)
 
 ;; primes

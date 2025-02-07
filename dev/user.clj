@@ -7,6 +7,10 @@
    [util.bench :as b]))
 
 (comment
+  (reload/reload)
+  (let [n (- (u/power 2 29) 1)]
+    (time (u/divisors-old n))
+    (time (u/divisors n)))
   :rcf)
 
 (comment
