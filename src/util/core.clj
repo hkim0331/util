@@ -111,12 +111,13 @@
        (probe "partition-by ")
        (map factor-expand)
        (probe "factor-expand ")
-       ; (apply combo/cartesian-product)
-       (cart)
-       (map (fn [[x y]] (* x y)))))
+       (apply combo/cartesian-product)
+       (map (fn [[x y]] (* x y)))
+       sort))
 
 (comment
   (divisors 8)
+  (divisors 1035)
   :rcf)
 
 ;; primes
