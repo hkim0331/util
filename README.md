@@ -7,7 +7,7 @@ forge utils in `scratch` (or the `develop` branch?) then copy them here.
 ## Dependency
 
 ```
-io.github.hkim0331/util {:git/tag "v0.2.0" :git/sha "b482bc5"}
+io.github.hkim0331/util {:git/tag "v0.2.33" :git/sha "800399b"}
 ```
 
 ## Usage
