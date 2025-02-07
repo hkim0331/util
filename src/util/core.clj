@@ -60,18 +60,28 @@
     :else (let [[n _] (div-2 n [])]
             (prime?-aux n 3))))
 
-; (defn- prime-sub? [i n rt]
-;   (if (or (zero? (rem n i)) (zero? (rem n (+ i 2))))
-;     false
-;     )
-; (defn prime? [n]
-;   (cond
-;     (= n 2) true
-;     (= n 3) true
-;     (= n 5) true
-;     (zero? (rem n 2)) false
-;     (zero? (rem n 3)) false
-;     :else (prime-sub?
+(defn- divide-1-5? [n i]
+  (println n (+ i 1) (+ i 5))
+  (or (zero? (rem n (+ i 1)))
+      (zero? (rem n (+ i 5)))))
+
+(defn prime' [n]
+  (cond
+    (< n 6) (or (= n 2) (= n 3) (= n 5))
+    (zero? (rem n 2)) false
+    (zero? (rem n 3)) false
+    :else (or (map #(divide-1-5? n %) (range 6 (+ (math/sqrt n) 2) 6)))))
+
+(prime' 25)
+(divide-1-5? 25 6)
+(prime? 25)
+(defn next-prime
+  "return the smallest prime number larger than `n`."
+  [n]
+  (-> (drop-while (complement prime?) (iterate inc (+ 1 n)))
+      first))
+
+; (- (next-prime (power 2 32)) (power 2 32))
 
 ; cartesian product
 

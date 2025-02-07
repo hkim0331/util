@@ -33,7 +33,7 @@ Use:
 
     % clojure -M:dev -m nrepl.cmdline
     or
-    % just nrepl
+    % just dev
     or dev container,
     % just dev-container
 

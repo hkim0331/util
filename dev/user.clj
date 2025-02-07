@@ -1,14 +1,24 @@
 (ns user
   (:require
-   [clojure.math :as m]
+   [clojure.math :as math]
    [util.core :as u]
    [util.bench :as b]))
 
-(time (u/factor-integer 203269561935987))
-(<  203269561935987 (u/power 2 55))
-(time (u/factor-integer (- (u/power 2 55) 1)))
+(let [start (u/power 2 32)
+      end (+ start 1000)
+      rng (range start end)]
+  (b/time+ (-> (filter u/prime?-using-factor-integer rng)
+               count)))
+
+;=> Time per call: 8.29 ms   Alloc per call: 49,479,616b   Iterations: 251
+; getting slow if use prime?-using-factor-integer
+;=> Time per call: 12.60 ms   Alloc per call: 119,781,546b   Iterations: 159
 
 (comment
+  (time (u/factor-integer 203269561935987))
+  (<  203269561935987 (u/power 2 55))
+  (time (u/factor-integer (- (u/power 2 55) 1)))
+
   (defn count-primes [f start end]
     (count (filter f (range start end))))
 
