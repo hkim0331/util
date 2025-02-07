@@ -11,6 +11,7 @@
   (let [n (- (u/power 2 29) 1)]
     (time (u/divisors-old n))
     (time (u/divisors n)))
+  (time (u/divisors (+ (u/power 2 10) 1)))
   :rcf)
 
 (comment

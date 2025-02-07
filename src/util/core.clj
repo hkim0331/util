@@ -95,17 +95,28 @@
   [coll]
   (map #(power (first coll) %) (range (inc (count coll)))))
 
+(defn- probe [msg any]
+  (prn msg any)
+  any)
+
+(defn cart
+  ([x] x)
+  ([x & y] (->> (combo/cartesian-product x y)
+                (map (fn [[x y]] (* x y))))))
+
 (defn divisors [n]
   (->> (factor-integer n)
+       (probe "factor-integer ")
        (partition-by identity)
+       (probe "partition-by ")
        (map factor-expand)
-       (apply combo/cartesian-product)
+       (probe "factor-expand ")
+       ; (apply combo/cartesian-product)
+       (cart)
        (map (fn [[x y]] (* x y)))))
 
 (comment
-  (time (divisors 203269561935987))
-  ; 38ms
-  (time (divisors (- (power 2 29) 1)))
+  (divisors 8)
   :rcf)
 
 ;; primes
