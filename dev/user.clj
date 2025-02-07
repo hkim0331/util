@@ -1,18 +1,35 @@
 (ns user
   (:require
    [clojure.math :as math]
+   [clojure.math.combinatorics :as combo]
+   [clj-reload.core :as reload]
    [util.core :as u]
    [util.bench :as b]))
 
-(let [start (u/power 2 32)
-      end (+ start 1000)
-      rng (range start end)]
-  (b/time+ (-> (filter u/prime?-using-factor-integer rng)
-               count)))
+(comment
+  (reload/reload)
+  (let [n (- (u/power 2 29) 1)]
+    (time (u/divisors-old n))
+    (time (u/divisors n)))
+  :rcf)
 
-;=> Time per call: 8.29 ms   Alloc per call: 49,479,616b   Iterations: 251
-; getting slow if use prime?-using-factor-integer
-;=> Time per call: 12.60 ms   Alloc per call: 119,781,546b   Iterations: 159
+(comment
+  (b/time+  (reduce + (u/divisors 203269561935987)))
+  (def start (u/power 2 32))
+  (def end (+ start 1000))
+  (def rng (range start end))
+
+  (b/time+ (-> (filter u/prime? rng)
+               count))
+  ;=> Time per call: 7.14 ms   Alloc per call: 49,478,848b   Iterations: 286
+
+  (b/time+ (-> (filter u/prime' rng)
+               count))
+  ;=> Time per call: 19.95 ms   Alloc per call: 66,120,442b   Iterations: 101
+
+  (time (->> (drop-while #(< % 100) u/primes)
+             (take-while #(< % 200))))
+  :rcf)
 
 (comment
   (time (u/factor-integer 203269561935987))
@@ -43,16 +60,15 @@
 
 (comment
   (map u/prime? (range 10))
-  (b/time+ (u/prime? (- (m/pow 2 31) 1)))
-  (b/time+ (u/prime?-using-factor (- (m/pow 2 32) 1)))
-  (btime+ (u/prime? (- (m/pow 2 32) 1)))
-  (b/quick  (u/prime? (- (m/pow 2 31) 1)))
-  (time (u/prime? (- (m/pow 2 32) 1)))
+  (b/time+ (u/prime? (- (u/power 2 31) 1)))
+  (b/time+ (u/prime? (- (u/power 2 32) 1)))
+  (b/quick  (u/prime? (- (u/power 2 31) 1)))
+  (time (u/prime? (- (u/power 2 32) 1)))
   (filter u/prime? (range 100))
   (u/factor-integer 24)
   (map u/factor-integer (range 10))
   (filter u/prime?-using-factor (range 100))
-  (b/time+ u/prime? (- (u/pow2 31) 1))
+  (b/time+ u/prime? (- (u/power 2 31) 1))
   (b/time+ (u/factor-integer 203269561935987))
   (b/with-progress (u/factor-integer 203269561935987))
   (b/quick (u/factor-integer 203269561935987))
