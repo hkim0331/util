@@ -90,8 +90,8 @@
 ;   :rcf)
 
 (defn- factor-expand
-  "(2 2 2)=>(1 2 4 8)
-   (3)=>(1 3)"
+  "(2 2 2) => (1 2 4 8)
+   (3) => (1 3)"
   [coll]
   (map #(power (first coll) %) (range (inc (count coll)))))
 
