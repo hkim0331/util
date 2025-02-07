@@ -1,7 +1,7 @@
 (ns user
   (:require
    [clojure.math :as math]
-   [clojure.reload :as reload]
+   [clj-reload.core :as reload]
    [util.core :as u]
    [util.bench :as b]))
 
@@ -53,7 +53,6 @@
 (comment
   (map u/prime? (range 10))
   (b/time+ (u/prime? (- (u/power 2 31) 1)))
-  (b/time+ (u/prime?-using-factor (- (math/pow 2 32) 1)))
   (b/time+ (u/prime? (- (u/power 2 32) 1)))
   (b/quick  (u/prime? (- (u/power 2 31) 1)))
   (time (u/prime? (- (u/power 2 32) 1)))

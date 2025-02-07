@@ -43,7 +43,7 @@
   (cond
     (< n 3) (= n 2)
     (even? n) false
-    :else (let [[n _] (div-by-2 n [])]
+    :else (let [[n _] (div-multi-by-2 n [])]
             (prime?-aux n 3))))
 
 (defn- prime'-aux [n i]
