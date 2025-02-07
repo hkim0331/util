@@ -59,7 +59,8 @@
     (< n 6) (or (= n 2) (= n 3) (= n 5))
     (zero? (rem n 2)) false
     (zero? (rem n 3)) false
-    :else (every? false? (map #(prime'-aux n %) (range 5 (+ (math/sqrt n) 1) 6)))))
+    :else (every? false?
+                  (map #(prime'-aux n %) (range 5 (+ (math/sqrt n) 1) 6)))))
 
 ; next-prime
 (defn next-prime
@@ -77,17 +78,14 @@
 
 ; divisors
 ; oridinaly definition
-(defn divisors-old [n]
+(defn divisors'
+  "use divisors, which is 5 times faster than this."
+  [n]
   (let [d1 (filter #(zero? (rem n %)) (range 1 (+ 1 (math/sqrt n))))
         d2 (map #(quot n %) (reverse d1))]
     (if (= (last d1) (first d2))
       (concat d1 (rest d2))
       (concat d1 d2))))
-
-; (comment
-;   (time (divisors-old 203269561935987))
-;   ; 214ms
-;   :rcf)
 
 (defn- factor-expand
   "(2 2 2) => (1 2 4 8)
@@ -95,30 +93,18 @@
   [coll]
   (map #(power (first coll) %) (range (inc (count coll)))))
 
-(defn- probe [msg any]
-  (prn msg any)
-  any)
-
-(defn cart
-  ([x] x)
-  ([x & y] (->> (combo/cartesian-product x y)
-                (map (fn [[x y]] (* x y))))))
+; (defn- probe [msg any]
+;   (prn msg any)
+;   any)
 
 (defn divisors [n]
   (->> (factor-integer n)
-       (probe "factor-integer ")
        (partition-by identity)
-       (probe "partition-by ")
        (map factor-expand)
-       (probe "factor-expand ")
        (apply combo/cartesian-product)
-       (map (fn [[x y]] (* x y)))
-       sort))
-
-(comment
-  (divisors 8)
-  (divisors 1035)
-  :rcf)
+       (map #(reduce * %))
+       ; sort
+       ))
 
 ;; primes
 ;; Excerpted from "Programming Clojure, Third Edition",

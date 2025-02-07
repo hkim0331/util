@@ -9,6 +9,10 @@ Under construction.
 - git/sha is determined at push time, master branch to GITHUB.
   how to reflect the :git/sha value into README.md?
 
+## v2.0-SNAPSHOT
+
+- debugged divisors
+
 ## v2.0.33 / 2025-02-07
 
 - improved bench.clj

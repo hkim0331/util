@@ -12,4 +12,8 @@
     (is (= (map u/prime? (range 100))
            (map u/prime' (range 100))))))
 
-
+(deftest divisors-test
+  (testing "divisors"
+    (dotimes [_ 10]
+      (let [r (rand-int 1000000)]
+        (is (= (set (u/divisors r)) (set (u/divisors' r))))))))
