@@ -1,5 +1,7 @@
 (ns util.core
-  (:require [clojure.math :as math]))
+  (:require
+   [clojure.math :as math]
+   [clojure.math.combinatorics :as combo]))
 
 ; power
 ; (pow a b) returns double.
@@ -60,7 +62,6 @@
     :else (every? false? (map #(prime'-aux n %) (range 5 (+ (math/sqrt n) 1) 6)))))
 
 ; next-prime
-
 (defn next-prime
   "return the smallest prime number larger than `n`."
   [n]
@@ -71,6 +72,13 @@
 ; math.
 
 ; divisors
+
+(defn divisors [n]
+  (let [d1 (filter #(zero? (rem n %)) (range 1 (+ 1 (math/sqrt n))))
+        d2 (map #(quot n %) (reverse d1))]
+    (if (= (last d1) (first d2))
+      (concat d1 (rest d2))
+      (concat d1 d2))))
 
 ;; primes
 ;; Excerpted from "Programming Clojure, Third Edition",
