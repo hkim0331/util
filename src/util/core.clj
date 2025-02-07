@@ -68,6 +68,10 @@
   (-> (drop-while (complement prime?) (iterate inc (+ 1 n)))
       first))
 
+(comment
+  (next-prime 100)
+  :rcf)
+
 ; cartesian product
 ; combo/cartesian-product
 
@@ -80,16 +84,16 @@
       (concat d1 (rest d2))
       (concat d1 d2))))
 
-(time (divisors 203269561935987))
-; 214ms
+(comment
+  (time (divisors 203269561935987))
+  ; 214ms
+  :rcf)
 
 (defn- factor-expand
   "(2 2 2)=>(1 2 4 8)
    (3)=>(1 3)"
   [coll]
   (map #(power (first coll) %) (range (inc (count coll)))))
-
-(map (fn [[x y]] (* x y)) [[1 2] [3 4]])
 
 (defn divisors' [n]
   (->> (factor-integer n)
@@ -98,8 +102,11 @@
        (apply combo/cartesian-product)
        (map (fn [[x y]] (* x y)))))
 
-(time (divisors' 203269561935987))
-; 38ms
+(comment
+  (time (divisors' 203269561935987))
+  ; 38ms
+  (divisors' 80)
+  :rcf)
 
 ;; primes
 ;; Excerpted from "Programming Clojure, Third Edition",
@@ -167,4 +174,3 @@
                      (fn [] (tarai (fn [] (- (fy) 1)) fz fx))
                      (fn [] (tarai (fn [] (- (fz) 1)) fx fy)))))]
     (tarai (fn [] x) (fn [] y) (fn [] z))))
-
