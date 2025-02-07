@@ -2,18 +2,42 @@
 
 Learn how to use remote clojure libraries.
 
-##
-    % neil new app util
-    % cd util
-    % neil dep update
+forge utils in `scratch` (or the `develop` branch?) then copy them here.
 
-## Installation
+## Dependency
 
-Download from https://github.com/hkim0331/util.git
+```
+io.github.hkim0331/util {:git/tag "v0.2.0" :git/sha "b482bc5"}
+```
 
 ## Usage
 
-FIXME: explanation
+Initialize
+
+```clojure
+(require '[util.core :as u]
+         '[util.bench :as b])
+```
+
+Use:
+
+```
+(u/factor-integer 100)
+; =>
+
+(b/time+ (u/tarai-lazy 15 5 5))
+;=>
+```
+
+## Start REPL
+
+    % clojure -M:dev -m nrepl.cmdline
+    or
+    % just dev
+    or dev container,
+    % just dev-container
+
+
 
 ## Options
 

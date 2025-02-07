@@ -6,6 +6,18 @@ Under construction.
 
 - learn how to use.
 - more utils.
+- git/sha is determined at push time, master branch to GITHUB.
+  how to reflect the :git/sha value into README.md?
+
+## v2.0.33 / 2025-02-07
+
+- improved bench.clj
+- divisors using factor-integer. 5 times faster.
+
+## v0.2.0 / 2025-02-05
+
+- changed name of receipies. 'dev', 'dev-container'.
+- bump-version.sh
 
 
 ## v0.1.0 - 2025-02-04

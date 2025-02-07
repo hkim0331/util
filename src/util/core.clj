@@ -1,4 +1,112 @@
-(ns util.core)
+(ns util.core
+  (:require
+   [clojure.math :as math]
+   [clojure.math.combinatorics :as combo]))
+
+; power
+; (pow a b) returns double.
+; (power n m) returns int.
+(defn sq [x] (* x x))
+
+(defn power [base n]
+  (cond
+    (zero? n) 1
+    (even? n) (sq (power base (quot n 2)))
+    :else (* base (power base (dec n)))))
+
+; factor integer
+(defn- div-multi-by-2 [n ret]
+  (if (zero? (rem n 2))
+    (recur (quot n 2) (conj ret 2))
+    [n ret]))
+
+(defn- fi-aux [n d ret]
+  (cond
+    (< n (* d d)) (if (= n 1)
+                    ret
+                    (conj ret n))
+    (zero? (rem n d)) (recur (quot n d) d (conj ret d))
+    :else (recur n (inc (inc d)) ret)))
+
+(defn factor-integer [n]
+  (if (< n 2)
+    [n]
+    (let [[m ret] (div-multi-by-2 n [])]
+      (fi-aux m 3 ret))))
+
+; prime?
+(defn- prime?-aux [n d]
+  (cond
+    (< n (* d d)) true
+    (zero? (rem n d)) false
+    :else (recur n (inc (inc d)))))
+
+(defn prime? [n]
+  (cond
+    (< n 3) (= n 2)
+    (even? n) false
+    :else (let [[n _] (div-multi-by-2 n [])]
+            (prime?-aux n 3))))
+
+(defn- prime'-aux [n i]
+  (or (zero? (rem n i))
+      (zero? (rem n (+ i 2)))))
+
+(defn prime'
+  "take twice time than `prime?`. maybe every? is slow?"
+  [n]
+  (cond
+    (< n 6) (or (= n 2) (= n 3) (= n 5))
+    (zero? (rem n 2)) false
+    (zero? (rem n 3)) false
+    :else (every? false? (map #(prime'-aux n %) (range 5 (+ (math/sqrt n) 1) 6)))))
+
+; next-prime
+(defn next-prime
+  "return the smallest prime number larger than `n`."
+  [n]
+  (-> (drop-while (complement prime?) (iterate inc (+ 1 n)))
+      first))
+
+(comment
+  (next-prime 100)
+  :rcf)
+
+; cartesian product
+; combo/cartesian-product
+
+; divisors
+; oridinaly definition
+(defn divisors-old [n]
+  (let [d1 (filter #(zero? (rem n %)) (range 1 (+ 1 (math/sqrt n))))
+        d2 (map #(quot n %) (reverse d1))]
+    (if (= (last d1) (first d2))
+      (concat d1 (rest d2))
+      (concat d1 d2))))
+
+; (comment
+;   (time (divisors-old 203269561935987))
+;   ; 214ms
+;   :rcf)
+
+(defn- factor-expand
+  "(2 2 2)=>(1 2 4 8)
+   (3)=>(1 3)"
+  [coll]
+  (map #(power (first coll) %) (range (inc (count coll)))))
+
+(defn divisors [n]
+  (->> (factor-integer n)
+       (partition-by identity)
+       (map factor-expand)
+       (apply combo/cartesian-product)
+       (map (fn [[x y]] (* x y)))))
+
+(comment
+  (time (divisors 203269561935987))
+  ; 38ms
+  (time (divisors (- (power 2 29) 1)))
+  :rcf)
 
 ;; primes
 ;; Excerpted from "Programming Clojure, Third Edition",
@@ -66,14 +174,3 @@
                      (fn [] (tarai (fn [] (- (fy) 1)) fz fx))
                      (fn [] (tarai (fn [] (- (fz) 1)) fx fy)))))]
     (tarai (fn [] x) (fn [] y) (fn [] z))))
-
-(comment
-  (time (tarai      15 5 0))
-  ;=> "Elapsed time: 7168.374709 msecs"
-
-  (time (tarai-memo 15 5 0))
-  ;=> "Elapsed time: 2.520583 msecs"
-
-  (time (tarai-lazy 15 5 0))
-  ;=> "Elapsed time: 3.412042 msecs"
-  :rcf)
