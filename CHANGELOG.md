@@ -12,6 +12,7 @@ Under construction.
 ## v0.2-SNAPSHOT
 
 - improved bench.clj
+- divisors using factor-integer. 5 times faster.
 
 ## v0.2.0 / 2025-02-05
 
