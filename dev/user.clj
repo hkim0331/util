@@ -11,10 +11,15 @@
   (let [n (- (u/power 2 29) 1)]
     (time (u/divisors-old n))
     (time (u/divisors n)))
+  (time (u/divisors (+ (u/power 2 10) 1)))
+  (rand-int)
+  (= (set [1 2 3]) (set [3 2 1]))
   :rcf)
 
 (comment
-  (b/time+  (reduce + (u/divisors 203269561935987)))
+  (b/quick  (u/divisors (- (u/power 2 29) 1)))
+  (b/quick  (u/divisors' (- (u/power 2 29) 1)))
+
   (def start (u/power 2 32))
   (def end (+ start 1000))
   (def rng (range start end))
