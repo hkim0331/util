@@ -9,7 +9,7 @@ Under construction.
 - git/sha is determined at push time, master branch to GITHUB.
   how to reflect the :git/sha value into README.md?
 
-## v0.2-SNAPSHOT
+## v0.2.45 / 2025-02-07
 
 - debugged divisors
 
@@ -28,8 +28,7 @@ Under construction.
 
 - primes
 - fold-l, fold-r
-- tarai, tarai-memo, tarai-lazy
-
+- tarai, tarai-memo, tarai-lazyd
 
 ## [v0.0.3] - 2025-02-04
 
