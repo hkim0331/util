@@ -7,15 +7,26 @@
    [hkim0331.util.bench :as b]
    hkim0331.util.core_test))
 
-(->> (u/divisors 5678)
-     sort)
-
 (comment
   (reload/reload)
   :rcf)
 
 (comment
-  (reload/reload)
+  (->> (u/divisors 5678)
+       (u/probe "divisors ")
+       sort)
+
+  (take 10 u/primes)
+
+  (u/factor-integer 1023)
+
+  (u/prime? (- (u/power 2 31) 1))
+
+  (u/prime-pi 100)
+
+  (-> (u/divisors 200)
+      sort)
+
   (let [n (- (u/power 2 29) 1)]
     (time (u/divisors-old n))
     (time (u/divisors n)))

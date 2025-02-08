@@ -17,3 +17,10 @@
     (dotimes [_ 10]
       (let [r (rand-int 1000000)]
         (is (= (set (u/divisors r)) (set (u/divisors' r))))))))
+
+(deftest factor-integer-test
+  (testing "divisors"
+    (dotimes [_ 10]
+      (let [r (rand-int 1000000)]
+        (is (= r (reduce * (u/factor-integer r))))))))
+
