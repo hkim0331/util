@@ -1,6 +1,7 @@
 # Change Log
 
 Learn how to make/use github libraries.
+
 Under construction.
 
 ## [Unreleased]
@@ -14,6 +15,8 @@ Under construction.
 
 - debugged divisors
 - included test dir in `just dev`.
+- just dev starts interactive REPL, too.
+- improved cart with `last` and `butlast`.
 
 ## v2.0.33 / 2025-02-07
 

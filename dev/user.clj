@@ -9,6 +9,11 @@
 
 (comment
   (reload/reload)
+  (cart)
+  :rcf)
+
+(comment
+  (reload/reload)
   (let [n (- (u/power 2 29) 1)]
     (time (u/divisors-old n))
     (time (u/divisors n)))
@@ -18,7 +23,7 @@
   :rcf)
 
 (comment
-  (b/quick  (u/divisors (- (u/power 2 29) 1)))
+  (b/quick  (u/divisors (- (u/opwer 2 29) 1)))
   (b/quick  (u/divisors' (- (u/power 2 29) 1)))
 
   (def start (u/power 2 32))

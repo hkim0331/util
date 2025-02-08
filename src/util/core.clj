@@ -94,24 +94,20 @@
 ; cartesian product
 ; combo/cartesian-product
 
-;; FIXME: (cart2 [1 2] [])
 (defn cart2 [xs ys]
   (for [x xs y ys]
-    [x y]))
-
-(comment
-  (cart2 [1 2 3] [4 5])
-  :rcf)
+    (cons x y)))
 
 (defn- cart-aux [xss ret]
-  (if (seq xss)
-    (cart-aux (rest xss) (cart2 (first xss) ret))
-    ret))
+  (if (empty? xss)
+    ret
+    (cart-aux (butlast xss) (cart2 (last xss) ret))))
 
 (defn cart [xss]
-  (cart-aux (rest xss) (first xss)))
+  (cart-aux xss [[]]))
 
 (comment
+  (cart [[1 2 3] [:a :b]])
   (cart [[1,2,3], [1 2] [4,5]])
   :rcf)
 
