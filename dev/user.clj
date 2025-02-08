@@ -5,7 +5,7 @@
    [clj-reload.core :as reload]
    [util.core :as u]
    [util.bench :as b]
-   util.core-test))
+   util.core_test))
 
 (comment
   (reload/reload)
