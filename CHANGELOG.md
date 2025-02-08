@@ -6,10 +6,13 @@ Under construction.
 
 ## [Unreleased]
 
-
 - more utils.
 - git/sha is determined at push time, master branch to GITHUB.
   how to reflect the :git/sha value into README.md?
+
+## v0.4-SNAPSHOT
+
+- `hkim0331.util` namespace.
 
 ## v0.3.53 / 2025-02-08
 
@@ -27,7 +30,6 @@ Under construction.
 
 - changed name of receipies. 'dev', 'dev-container'.
 - bump-version.sh
-
 
 ## v0.1.0 - 2025-02-04
 

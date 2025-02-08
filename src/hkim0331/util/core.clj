@@ -1,7 +1,11 @@
-(ns util.core
+(ns hkim0331.util.core
   (:require
    [clojure.math :as math]
    [clojure.math.combinatorics :as combo]))
+
+(defn probe [msg any]
+  (prn msg any)
+  any)
 
 ;; primes
 ;; Excerpted from "Programming Clojure, Third Edition",
@@ -106,11 +110,6 @@
 (defn cart [xss]
   (cart-aux xss [[]]))
 
-(comment
-  (cart [[1 2 3] [:a :b]])
-  (cart [[1,2,3], [1 2] [4,5]])
-  :rcf)
-
 ; divisors
 ; oridinaly definition
 (defn divisors'
@@ -127,10 +126,6 @@
    (3) => (1 3)"
   [coll]
   (map #(power (first coll) %) (range (inc (count coll)))))
-
-(defn- probe [msg any]
-  (prn msg any)
-  any)
 
 (defn divisors [n]
   (->> (factor-integer n)
