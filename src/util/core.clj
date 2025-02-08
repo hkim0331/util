@@ -3,6 +3,28 @@
    [clojure.math :as math]
    [clojure.math.combinatorics :as combo]))
 
+;; primes
+;; Excerpted from "Programming Clojure, Third Edition",
+;; published by The Pragmatic Bookshelf.
+;; Copyrights apply to this code. It may not be used to create training material,
+;; courses, books, articles, and the like. Contact us if you are in doubt.
+;; We make no guarantees that this code is fit for any purpose.
+;; Visit http://www.pragmaticprogrammer.com/titles/shcloj3 for more book information.
+(def primes
+  (concat
+   [2 3 5 7]
+   (lazy-seq
+    (let [primes-from
+          (fn primes-from [n [f & r]]
+            (if (some #(zero? (rem n %))
+                      (take-while #(<= (* % %) n) primes))
+              (recur (+ n f) r)
+              (lazy-seq (cons n (primes-from (+ n f) r)))))
+          wheel (cycle [2 4 2 4 6 2 6 4 2 4 6 6 2 6  4  2
+                        6 4 6 8 4 2 4 2 4 8 6 4 6 2  4  6
+                        2 6 6 4 2 4 6 2 6 4 2 4 2 10 2 10])]
+      (primes-from 11 wheel)))))
+
 ; power
 ; (pow a b) returns double.
 ; (power n m) returns int.
@@ -69,12 +91,29 @@
   (-> (drop-while (complement prime?) (iterate inc (+ 1 n)))
       first))
 
-(comment
-  (next-prime 100)
-  :rcf)
-
 ; cartesian product
 ; combo/cartesian-product
+
+;; FIXME: (cart2 [1 2] [])
+(defn cart2 [xs ys]
+  (for [x xs y ys]
+    [x y]))
+
+(comment
+  (cart2 [1 2 3] [4 5])
+  :rcf)
+
+(defn- cart-aux [xss ret]
+  (if (seq xss)
+    (cart-aux (rest xss) (cart2 (first xss) ret))
+    ret))
+
+(defn cart [xss]
+  (cart-aux (rest xss) (first xss)))
+
+(comment
+  (cart [[1,2,3], [1 2] [4,5]])
+  :rcf)
 
 ; divisors
 ; oridinaly definition
@@ -93,9 +132,9 @@
   [coll]
   (map #(power (first coll) %) (range (inc (count coll)))))
 
-; (defn- probe [msg any]
-;   (prn msg any)
-;   any)
+(defn- probe [msg any]
+  (prn msg any)
+  any)
 
 (defn divisors [n]
   (->> (factor-integer n)
@@ -105,28 +144,6 @@
        (map #(reduce * %))
        ; sort
        ))
-
-;; primes
-;; Excerpted from "Programming Clojure, Third Edition",
-;; published by The Pragmatic Bookshelf.
-;; Copyrights apply to this code. It may not be used to create training material,
-;; courses, books, articles, and the like. Contact us if you are in doubt.
-;; We make no guarantees that this code is fit for any purpose.
-;; Visit http://www.pragmaticprogrammer.com/titles/shcloj3 for more book information.
-(def primes
-  (concat
-   [2 3 5 7]
-   (lazy-seq
-    (let [primes-from
-          (fn primes-from [n [f & r]]
-            (if (some #(zero? (rem n %))
-                      (take-while #(<= (* % %) n) primes))
-              (recur (+ n f) r)
-              (lazy-seq (cons n (primes-from (+ n f) r)))))
-          wheel (cycle [2 4 2 4 6 2 6 4 2 4 6 6 2 6  4  2
-                        6 4 6 8 4 2 4 2 4 8 6 4 6 2  4  6
-                        2 6 6 4 2 4 6 2 6 4 2 4 2 10 2 10])]
-      (primes-from 11 wheel)))))
 
 ; fold
 ; https://stackoverflow.com/questions/16800255/how-do-we-do-both-left-and-right-folds-in-clojure
