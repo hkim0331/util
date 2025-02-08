@@ -1,6 +1,6 @@
-(ns util.core-test
+(ns hkim0331.util.core-test
   (:require [clojure.test :refer [deftest testing is]]
-            [util.core :as u]))
+            [hkim0331.util.core :as u]))
 
 (deftest power-test
   (testing "power"

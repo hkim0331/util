@@ -1,4 +1,4 @@
-(ns util.bench
+(ns hkim0331.util.bench
   (:require [criterium.core :refer [with-progress-reporting quick-bench]]))
 
 #_(defmacro quick [expr]

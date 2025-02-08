@@ -3,13 +3,15 @@
    [clojure.math :as math]
    [clojure.math.combinatorics :as combo]
    [clj-reload.core :as reload]
-   [util.core :as u]
-   [util.bench :as b]
-   util.core_test))
+   [hkim0331.util.core :as u]
+   [hkim0331.util.bench :as b]
+   hkim0331.util.core_test))
+
+(->> (u/divisors 5678)
+     sort)
 
 (comment
   (reload/reload)
-  (cart)
   :rcf)
 
 (comment
