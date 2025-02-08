@@ -9,6 +9,8 @@ Under construction.
 - more utils.
 - git/sha is determined at push time, master branch to GITHUB.
   how to reflect the :git/sha value into README.md?
+- criterium: hkim0331.util.bench requires criterium.
+
 
 ## v0.4.59 / 2025-02-08
 
