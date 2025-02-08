@@ -33,8 +33,7 @@ Under construction.
 
 - primes
 - fold-l, fold-r
-- tarai, tarai-memo, tarai-lazy
-
+- tarai, tarai-memo, tarai-lazyd
 
 ## [v0.0.3] - 2025-02-04
 
