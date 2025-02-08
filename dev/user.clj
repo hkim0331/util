@@ -4,7 +4,13 @@
    [clojure.math.combinatorics :as combo]
    [clj-reload.core :as reload]
    [util.core :as u]
-   [util.bench :as b]))
+   [util.bench :as b]
+   util.core_test))
+
+(comment
+  (reload/reload)
+  (cart)
+  :rcf)
 
 (comment
   (reload/reload)
@@ -17,7 +23,7 @@
   :rcf)
 
 (comment
-  (b/quick  (u/divisors (- (u/power 2 29) 1)))
+  (b/quick  (u/divisors (- (u/opwer 2 29) 1)))
   (b/quick  (u/divisors' (- (u/power 2 29) 1)))
 
   (def start (u/power 2 32))

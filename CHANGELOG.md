@@ -1,17 +1,22 @@
 # Change Log
 
+Learn how to make/use github libraries.
+
 Under construction.
 
 ## [Unreleased]
 
-- learn how to use.
+
 - more utils.
 - git/sha is determined at push time, master branch to GITHUB.
   how to reflect the :git/sha value into README.md?
 
-## v0.2.45 / 2025-02-07
+## v0.3.53 / 2025-02-08
 
 - debugged divisors
+- included test dir in `just dev`.
+- just dev starts interactive REPL, too.
+- improved cart with `last` and `butlast`.
 
 ## v2.0.33 / 2025-02-07
 

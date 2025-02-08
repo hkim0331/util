@@ -3,7 +3,7 @@ help:
 	just --list
 
 dev:
-	clojure -M:dev -m nrepl.cmdline
+	clojure -M:dev -m nrepl.cmdline -i
 
 dev-container:
 	clojure -M:dev -m nrepl.cmdline -b 0.0.0.0 -p 7777
