@@ -188,7 +188,23 @@
                      (fn [] (tarai (fn [] (- (fz) 1)) fx fy)))))]
     (tarai (fn [] x) (fn [] y) (fn [] z))))
 
-; reverse
+; flatten-all
+(defn flatten-all [coll]
+  (if (sequential? coll)
+    (if (empty? coll)
+      []
+      (concat (flatten-all (first coll))
+              (flatten-all (rest coll))))
+    [coll]))
+
+(comment
+  (flatten-all [])
+  (flatten-all [1 2 3])
+  (flatten-all [[1] [2] [3]])
+  (flatten-all [[1 2] [3 [4] [[5]]]])
+  :rcf)
+
+; reverse-all
 ; sequencial? is the key.
 (defn reverse-all [coll]
   (if (sequential? coll)
@@ -198,3 +214,7 @@
             (reverse-all (first coll))))
     coll))
 
+(comment
+  (reverse-all [])
+  (reverse-all [1 2 3])
+  :rcf)

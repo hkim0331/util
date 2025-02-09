@@ -30,3 +30,10 @@
     (is (= (u/reverse-all [0]) [0]))
     (is (= (u/reverse-all [1 [2 [3 4 5]] [6 7] 8 9])
            [9 8 [7 6] [[5 4 3] 2] 1]))))
+
+(deftest flatten-all-test
+  (testing "flatten-all"
+    (is (= (u/flatten-all []) []))
+    (is (= (u/flatten-all [1 2 3]) [1 2 3]))
+    (is (= (u/flatten-all [[1] [2] [3]]) [1 2 3]))
+    (is (= (u/flatten-all [[1 2] [3 [4] [[5]]]])) [1 2 3 4 5])))

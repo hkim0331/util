@@ -14,6 +14,7 @@ Under construction.
 ## v0.4-SNAPSHOT
 
 - core/reverse-all
+- core/flatten-all
 
 ## v0.4.65 / 2025-02-09
 
