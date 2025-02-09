@@ -24,3 +24,9 @@
       (let [r (rand-int 1000000)]
         (is (= r (reduce * (u/factor-integer r))))))))
 
+(deftest reverse-all-test
+  (testing "reverse-all"
+    (is (= (u/reverse-all 0) 0))
+    (is (= (u/reverse-all [0]) [0]))
+    (is (= (u/reverse-all [1 [2 [3 4 5]] [6 7] 8 9])
+           [9 8 [7 6] [[5 4 3] 2] 1]))))

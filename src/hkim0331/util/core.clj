@@ -187,3 +187,14 @@
                      (fn [] (tarai (fn [] (- (fy) 1)) fz fx))
                      (fn [] (tarai (fn [] (- (fz) 1)) fx fy)))))]
     (tarai (fn [] x) (fn [] y) (fn [] z))))
+
+; reverse
+; sequencial? is the key.
+(defn reverse-all [coll]
+  (if (sequential? coll)
+    (if (empty? coll)
+      []
+      (conj (reverse-all (rest coll))
+            (reverse-all (first coll))))
+    coll))
+
