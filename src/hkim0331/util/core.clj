@@ -95,6 +95,13 @@
   (-> (drop-while (complement prime?) (iterate inc (+ 1 n)))
       first))
 
+; prime-pi
+(defn prime-pi
+  "number of primes less than or equal to x."
+  [n]
+  (-> (take-while #(< % n) primes)
+      count))
+
 ; cartesian product
 ; combo/cartesian-product
 
