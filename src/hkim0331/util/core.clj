@@ -217,4 +217,5 @@
 (comment
   (reverse-all [])
   (reverse-all [1 2 3])
+  (reverse-all [1 [[2 3] 4 [5 [[6]]] 7] 8 9])
   :rcf)
