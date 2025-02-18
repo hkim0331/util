@@ -11,7 +11,7 @@ Under construction.
   how to reflect the :git/sha value into README.md?
 - criterium: hkim0331.util.bench requires criterium.
 
-## v0.4-SNAPSHOT
+## v0.4.83 / 2025-02-18
 
 - core/reverse-all
 - core/flatten-all
@@ -38,7 +38,7 @@ Under construction.
 - improved bench.clj
 - divisors using factor-integer. 5 times faster.
 
-## v0.2.1-SNAPSHOT
+## v0.4.83 / 2025-02-18
 
 - changed namespace to `hkim0331.util.core` and `hkim0331.util.bench`.
 
@@ -74,5 +74,5 @@ e40d95c
 e40d95c6f09cd451641094587cbd41df53c829c7    refs/tags/v0.0.1
 
 
-[Unreleased]: https://github.com/hkim0331/util/compare/v0.0.3...HEAD
-[v0.0.3]: https://github.com/hkim0331/util/compare/v0.0.1...v0.0.3
+[Unreleased]: https://github.com/hkim0331/util/compare/v0.4.83...HEAD
+
