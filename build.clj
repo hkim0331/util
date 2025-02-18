@@ -3,7 +3,7 @@
   (:require [clojure.tools.build.api :as b]))
 
 (def lib 'net.clojars.util/util)
-(def version "v0.4.65")
+(def version "v0.4.76")
 (def main 'util.util)
 (def class-dir "target/classes")
 
