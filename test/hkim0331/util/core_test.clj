@@ -36,4 +36,4 @@
     (is (= (u/flatten-all []) []))
     (is (= (u/flatten-all [1 2 3]) [1 2 3]))
     (is (= (u/flatten-all [[1] [2] [3]]) [1 2 3]))
-    (is (= (u/flatten-all [[1 2] [3 [4] [[5]]]])) [1 2 3 4 5])))
+    (is (= (u/flatten-all [[1 2] [3 [4] [[5]]]]) [1 2 3 4 5]))))

@@ -1,7 +1,7 @@
 (ns user
   (:require
-   [clojure.math :as math]
-   [clojure.math.combinatorics :as combo]
+   ; [clojure.math :as math]
+   ; [clojure.math.combinatorics :as combo]
    [clj-reload.core :as reload]
    [hkim0331.util.core :as u]
    [hkim0331.util.bench :as b]
@@ -28,15 +28,14 @@
       sort)
 
   (let [n (- (u/power 2 29) 1)]
-    (time (u/divisors-old n))
     (time (u/divisors n)))
   (time (u/divisors (+ (u/power 2 10) 1)))
-  (rand-int)
+  (rand-int 100)
   (= (set [1 2 3]) (set [3 2 1]))
   :rcf)
 
 (comment
-  (b/quick  (u/divisors (- (u/opwer 2 29) 1)))
+  (b/quick  (u/divisors (- (u/power 2 29) 1)))
   (b/quick  (u/divisors' (- (u/power 2 29) 1)))
 
   (def start (u/power 2 32))

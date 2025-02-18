@@ -10,6 +10,7 @@ Under construction.
 - git/sha is determined at push time, master branch to GITHUB.
   how to reflect the :git/sha value into README.md?
 - criterium: hkim0331.util.bench requires criterium.
+- read only if https? token?
 
 ## v0.4-SNAPSHOT
 

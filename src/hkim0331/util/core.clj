@@ -95,6 +95,8 @@
   [n]
   (-> (drop-while (complement prime?) (iterate inc (+ 1 n)))
       first))
+(comment
+  (= 119 (next-prime 117)))
 
 ; prime-pi
 (defn prime-pi
@@ -116,6 +118,9 @@
 
 (defn cart [xss]
   (cart-aux xss [[]]))
+
+(comment
+  (cart [[1 2] [:a :b]]))
 
 ; divisors
 ; oridinaly definition
@@ -156,6 +161,10 @@
   (if (empty? coll)
     val
     (f (fold-r f val (rest coll)) (first coll))))
+
+(comment
+  (fold-l + 0 (range 10))
+  (fold-r * 1 (range 1 10)))
 
 ; tarai
 (defn tarai
@@ -220,5 +229,5 @@
   (reverse-all [1 [[2 3] 4 [5 [[6]]] 7] 8 9])
   :rcf)
 
-(defn abbrev [s]
-  ())
+;; (defn abbrev [s]
+;;   ())
