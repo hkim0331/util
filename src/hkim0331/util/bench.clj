@@ -56,6 +56,8 @@
     (format "Used: %.0f/%.0f MB (%.0f%%), free: %.0f MB" used total (/ used total 0.01)
             (/ (.freeMemory (Runtime/getRuntime)) 1e6))))
 
+; what is this?
+;
 ; (defmacro debugging-tools []
 ;   '(do
 ;      (require '[clj-async-profiler.core :as prof])
@@ -65,8 +67,8 @@
 ;      (.refer *ns* 'time+ #'user/time+)
 ;      (.refer *ns* 'heap #'user/heap)))
 
-(comment
-  (debugging-tools)
-  ; Execution error (FileNotFoundException) at user/eval11131 (REPL:55).
-  ; Could not locate clj_async_profiler/core__init.class, clj_async_profiler/core.clj or clj_async_profiler/core.cljc on classpath. Please check that namespaces with dashes use underscores in the Clojure file name.
-  :rcf)
+; (comment
+;   (debugging-tools)
+;   ; Execution error (FileNotFoundException) at user/eval11131 (REPL:55).
+;   ; Could not locate clj_async_profiler/core__init.class, clj_async_profiler/core.clj or clj_async_profiler/core.cljc on classpath. Please check that namespaces with dashes use underscores in the Clojure file name.
+;   :rcf)

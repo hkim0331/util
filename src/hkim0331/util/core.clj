@@ -3,7 +3,8 @@
    [clojure.math :as math]
    [clojure.math.combinatorics :as combo]))
 
-(defn probe [msg any]
+(defn probe
+  [msg any]
   (prn msg any)
   any)
 
@@ -104,7 +105,6 @@
 
 ; cartesian product
 ; combo/cartesian-product
-
 (defn cart2 [xs ys]
   (for [x xs y ys]
     (cons x y)))
@@ -219,3 +219,6 @@
   (reverse-all [1 2 3])
   (reverse-all [1 [[2 3] 4 [5 [[6]]] 7] 8 9])
   :rcf)
+
+(defn abbrev [s]
+  ())
