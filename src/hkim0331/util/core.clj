@@ -3,7 +3,8 @@
    [clojure.math :as math]
    [clojure.math.combinatorics :as combo]))
 
-(defn probe [msg any]
+(defn probe
+  [msg any]
   (prn msg any)
   any)
 
@@ -104,7 +105,6 @@
 
 ; cartesian product
 ; combo/cartesian-product
-
 (defn cart2 [xs ys]
   (for [x xs y ys]
     (cons x y)))
@@ -187,3 +187,38 @@
                      (fn [] (tarai (fn [] (- (fy) 1)) fz fx))
                      (fn [] (tarai (fn [] (- (fz) 1)) fx fy)))))]
     (tarai (fn [] x) (fn [] y) (fn [] z))))
+
+; flatten-all
+(defn flatten-all [coll]
+  (if (sequential? coll)
+    (if (empty? coll)
+      []
+      (concat (flatten-all (first coll))
+              (flatten-all (rest coll))))
+    [coll]))
+
+(comment
+  (flatten-all [])
+  (flatten-all [1 2 3])
+  (flatten-all [[1] [2] [3]])
+  (flatten-all [[1 2] [3 [4] [[5]]]])
+  :rcf)
+
+; reverse-all
+; sequencial? is the key.
+(defn reverse-all [coll]
+  (if (sequential? coll)
+    (if (empty? coll)
+      []
+      (conj (reverse-all (rest coll))
+            (reverse-all (first coll))))
+    coll))
+
+(comment
+  (reverse-all [])
+  (reverse-all [1 2 3])
+  (reverse-all [1 [[2 3] 4 [5 [[6]]] 7] 8 9])
+  :rcf)
+
+(defn abbrev [s]
+  ())

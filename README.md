@@ -7,16 +7,29 @@ forge utils in `scratch` (or the `develop` branch?) then copy them here.
 ## Dependency
 
 ```
-io.github.hkim0331/util {:git/tag "v0.3.53" :git/sha "6ff7615"}
+io.github.hkim0331/util {:git/tag "v0.4.65" :git/sha "9c102f4"}
 ```
 
 ## Usage
 
-Initialize
+Initialize:
 
 ```clojure
-(require '[util.core :as u]
-         '[util.bench :as b])
+(require '[hkim0331.util.core :as u])
+
+```
+
+when you use util bench, add
+
+```
+criterium/criterium {:mvn/version "0.4.6"}
+```
+
+to your deps, then,
+
+```clojure
+(require '[hkim0331.util.core :as u]
+         '[hkim0331.util.bench :as b])
 ```
 
 Use:
