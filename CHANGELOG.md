@@ -12,10 +12,13 @@ Under construction.
 - criterium: hkim0331.util.bench requires criterium.
 - read only if https? token?
 
-## v0.4.76 / 2025-02-18
+
+## v0.4.83 / 2025-02-18
 
 - core/reverse-all
 - core/flatten-all
+- fix core_test.cjp
+- core/binaru-search
 
 ## v0.4.65 / 2025-02-09
 
@@ -37,7 +40,11 @@ Under construction.
 - improved bench.clj
 - divisors using factor-integer. 5 times faster.
 
+<<<<<<< HEAD
 ## v0.4.76 / 2025-02-18
+=======
+## v0.4.83 / 2025-02-18
+>>>>>>> release/v0.4.83
 
 - changed namespace to `hkim0331.util.core` and `hkim0331.util.bench`.
 

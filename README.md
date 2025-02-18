@@ -19,13 +19,14 @@ Initialize:
 
 ```
 
-when you use util bench, add
+when you use util bench, add criterium to your deps,
 
 ```
 criterium/criterium {:mvn/version "0.4.6"}
 ```
 
-to your deps, then,
+then,
+
 
 ```clojure
 (require '[hkim0331.util.core :as u]

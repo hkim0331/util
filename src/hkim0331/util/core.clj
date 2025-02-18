@@ -231,3 +231,19 @@
 
 ;; (defn abbrev [s]
 ;;   ())
+
+(defn binary-search [v value]
+  (loop [low 0 high (dec (count v))
+         depth 0]
+    (if (<= high (inc low))
+      (cond (= value (v low)) low
+            (= value (v high)) high
+            :else nil)
+      (let [middle (quot (+ low high) 2)]
+        (if (< (v middle) value)
+          (recur (inc middle) high (inc depth))
+          (recur low middle (inc depth)))))))
+
+(comment
+  (binary-search (vec (range 1000)) 500))
+
