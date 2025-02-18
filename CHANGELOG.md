@@ -80,5 +80,5 @@ e40d95c
 e40d95c6f09cd451641094587cbd41df53c829c7    refs/tags/v0.0.1
 
 
-[Unreleased]: https://github.com/hkim0331/util/compare/v0.0.3...HEAD
-[v0.0.3]: https://github.com/hkim0331/util/compare/v0.0.1...v0.0.3
+[Unreleased]: https://github.com/hkim0331/util/compare/v0.4.83...HEAD
+
