@@ -41,6 +41,6 @@
 (deftest binary-search-test
   (testing "binary-search"
     (is (= 500 (u/binary-search (vec (range 500)) 500)))
-    (is (= nil (u/binary-search (vec (range 500)) 499)))
+    (is (= 500 (u/binary-search (vec (range 0 1000 2)) 500)))
     (is (= nil (u/binary-search (vec (range 500)) 501)))))
 

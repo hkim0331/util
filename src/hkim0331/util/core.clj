@@ -220,6 +220,7 @@
   (reverse-all [1 [[2 3] 4 [5 [[6]]] 7] 8 9])
   :rcf)
 
+; binary-search
 (defn binary-search [v value]
   (loop [low 0 high (dec (count v))
          depth 0]
@@ -233,4 +234,9 @@
           (recur low middle (inc depth)))))))
 
 (comment
-  (binary-search (vec (range 1000)) 500))
+  (= :b ([:a :b :c] 1))
+  (binary-search (vec (range 0 1000 3)) 500)
+  (binary-search (vec (range 199)) 299)
+  :rcf)
+
+
