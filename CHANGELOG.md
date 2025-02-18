@@ -15,6 +15,8 @@ Under construction.
 
 - core/reverse-all
 - core/flatten-all
+- fix core_test.cjp
+- core/binaru-search
 
 ## v0.4.65 / 2025-02-09
 
