@@ -1,25 +1,57 @@
 # Change Log
 
+Learn how to make/use github libraries.
+
 Under construction.
 
 ## [Unreleased]
 
-- learn how to use.
 - more utils.
-- git/sha is updated before finish comitting.
+- git/sha is determined at push time, master branch to GITHUB.
+  how to reflect the :git/sha value into README.md?
+- criterium: hkim0331.util.bench requires criterium.
+- read only if https? token?
+
+## v0.4.76 / 2025-02-18
+
+- core/reverse-all
+- core/flatten-all
+
+## v0.4.65 / 2025-02-09
+
+- core/prime-pi
+
+## v0.4.59 / 2025-02-08
+
+- `hkim0331.util` namespace.
+
+## v0.3.53 / 2025-02-08
+
+- debugged divisors
+- included test dir in `just dev`.
+- just dev starts interactive REPL, too.
+- improved cart with `last` and `butlast`.
+
+## v2.0.33 / 2025-02-07
+
+- improved bench.clj
+- divisors using factor-integer. 5 times faster.
+
+## v0.4.76 / 2025-02-18
+
+- changed namespace to `hkim0331.util.core` and `hkim0331.util.bench`.
+
 
 ## v0.2.0 / 2025-02-05
 
 - changed name of receipies. 'dev', 'dev-container'.
 - bump-version.sh
 
-
 ## v0.1.0 - 2025-02-04
 
 - primes
 - fold-l, fold-r
-- tarai, tarai-memo, tarai-lazy
-
+- tarai, tarai-memo, tarai-lazyd
 
 ## [v0.0.3] - 2025-02-04
 
