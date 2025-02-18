@@ -12,11 +12,24 @@ io.github.hkim0331/util {:git/tag "v0.2.0" :git/sha "b482bc5"}
 
 ## Usage
 
-Initialize
+Initialize:
 
 ```clojure
-(require '[util.core :as u]
-         '[util.bench :as b])
+(require '[hkim0331.util.core :as u])
+
+```
+
+when you use util bench, add
+
+```
+criterium/criterium {:mvn/version "0.4.6"}
+```
+
+to your deps, then,
+
+```clojure
+(require '[hkim0331.util.core :as u]
+         '[hkim0331.util.bench :as b])
 ```
 
 Use:

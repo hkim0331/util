@@ -9,6 +9,11 @@ Under construction.
 - git/sha is determined at push time, master branch to GITHUB.
   how to reflect the :git/sha value into updated README.md?
 
+## v0.2.1-SNAPSHOT
+
+- changed namespace to `hkim0331.util.core` and `hkim0331.util.bench`.
+
+
 ## v0.2.0 / 2025-02-05
 
 - changed name of receipies. 'dev', 'dev-container'.
