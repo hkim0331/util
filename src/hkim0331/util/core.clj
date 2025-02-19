@@ -1,7 +1,7 @@
 (ns hkim0331.util.core
-  (:require
-   [clojure.math :as math]
-   [clojure.math.combinatorics :as combo]))
+  (:require [clojure.string :as str]
+            [clojure.math :as math]
+            [clojure.math.combinatorics :as combo]))
 
 (defn probe
   [msg any]
@@ -229,8 +229,11 @@
   (reverse-all [1 [[2 3] 4 [5 [[6]]] 7] 8 9])
   :rcf)
 
-;; (defn abbrev [s]
-;;   ())
+;; shorten?
+(defn shorten
+  ([s] (shorten s 20))
+  ([s n] (let [pat (re-pattern (str "(^.{" n "}).*"))]
+           (str/replace-first s pat "$1..."))))
 
 ; binary-search
 (defn binary-search [v value]

@@ -11,7 +11,11 @@ Under construction.
   how to reflect the :git/sha value into README.md?
 - criterium: hkim0331.util.bench requires criterium.
 - read only if https? token?
+- `shorten` is better as function name than `omit`?
 
+## v0.4-SNAPSHOT
+
+- core/shorten (renamed from omit).
 
 ## v0.4.83 / 2025-02-18
 

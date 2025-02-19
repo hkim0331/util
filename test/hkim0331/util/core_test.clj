@@ -43,3 +43,6 @@
     (is (= 500 (u/binary-search (vec (range 500)) 500)))
     (is (= 500 (u/binary-search (vec (range 0 1000 2)) 500)))
     (is (= nil (u/binary-search (vec (range 500)) 501)))))
+
+(deftest shorten-test
+  (is (= "apple" (u/shorten "apple orange" 5))))
