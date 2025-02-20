@@ -7,6 +7,10 @@
    [hkim0331.util.bench :as b]
    hkim0331.util.core_test))
 
+(let [v (vec (range 0 100000 2))]
+  (time (u/binary-search v 5000)) ; => 0.04ms
+  (time (.indexOf v 5000))) ; => 2.26ms
+
 (comment
   (reload/reload)
   :rcf)

@@ -10,12 +10,19 @@ Under construction.
 - git/sha is determined at push time, master branch to GITHUB.
   how to reflect the :git/sha value into README.md?
 - criterium: hkim0331.util.bench requires criterium.
-- read only if https? token?
-- `shorten` is better as function name than `omit`?
+
 
 ## v0.4-SNAPSHOT
 
 - core/shorten (renamed from omit).
+- core/binary-search -- `.indexOf` is slow.
+- fixed: read only if https? token?
+
+```
+% git remote -v
+origin  git@github.com:hkim0331/util.git (fetch)
+origin  git@github.com:hkim0331/util.git (push)
+```
 
 ## v0.4.83 / 2025-02-18
 

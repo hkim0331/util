@@ -80,7 +80,8 @@
       (zero? (rem n (+ i 2)))))
 
 (defn prime'
-  "take twice time than `prime?`. maybe every? is slow?"
+  "need improve.
+   take twice time than `prime?`. maybe every? is slow?"
   [n]
   (cond
     (< n 6) (or (= n 2) (= n 3) (= n 5))
@@ -124,14 +125,14 @@
 
 ; divisors
 ; oridinaly definition
-(defn divisors'
-  "use divisors, which is 5 times faster than this."
-  [n]
-  (let [d1 (filter #(zero? (rem n %)) (range 1 (+ 1 (math/sqrt n))))
-        d2 (map #(quot n %) (reverse d1))]
-    (if (= (last d1) (first d2))
-      (concat d1 (rest d2))
-      (concat d1 d2))))
+; (defn divisors'
+;   "use divisors, which is 5 times faster than this."
+;   [n]
+;   (let [d1 (filter #(zero? (rem n %)) (range 1 (+ 1 (math/sqrt n))))
+;         d2 (map #(quot n %) (reverse d1))]
+;     (if (= (last d1) (first d2))
+;       (concat d1 (rest d2))
+;       (concat d1 d2))))
 
 (defn- factor-expand
   "(2 2 2) => (1 2 4 8)
@@ -229,27 +230,37 @@
   (reverse-all [1 [[2 3] 4 [5 [[6]]] 7] 8 9])
   :rcf)
 
-;; shorten?
+;; shorten string
 (defn shorten
   ([s] (shorten s 20))
   ([s n] (let [pat (re-pattern (str "(^.{" n "}).*"))]
            (str/replace-first s pat "$1..."))))
 
+(comment
+  (shorten (str (range 100)))
+  (shorten (vec (range 100)) 10)
+  :rcf)
+
 ; binary-search
-(defn binary-search [v value]
-  (loop [low 0 high (dec (count v))
-         depth 0]
+(defn binary-search
+  "Return the index if cound or nil."
+  [v value]
+  (loop [low 0 high (dec (count v))]
     (if (<= high (inc low))
       (cond (= value (v low)) low
             (= value (v high)) high
             :else nil)
       (let [middle (quot (+ low high) 2)]
         (if (< (v middle) value)
-          (recur (inc middle) high (inc depth))
-          (recur low middle (inc depth)))))))
+          (recur (inc middle) high)
+          (recur low middle))))))
 
 (comment
-  (= :b ([:a :b :c] 1))
-  (binary-search (vec (range 0 1000 3)) 500)
-  (binary-search (vec (range 199)) 299)
-  :rcf)
+  (let [v (vec (range 0 100000 2))]
+    (time (binary-search v 50000)) ; => 0.06ms
+    (time (.indexOf v 50000)) ; => 1.35ms
+    (time (binary-search v 50001)) ; => 0.04ms
+    (time (.indexOf v 50001)) ; => 2.14ms
+    ))
+
+
