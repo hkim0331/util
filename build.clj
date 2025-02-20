@@ -2,8 +2,9 @@
   (:refer-clojure :exclude [test])
   (:require [clojure.tools.build.api :as b]))
 
+; need modify
 (def lib 'net.clojars.util/util)
-(def version "v0.4.83")
+(def version "v0.4.93")
 (def main 'util.util)
 (def class-dir "target/classes")
 

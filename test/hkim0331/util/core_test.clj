@@ -38,11 +38,13 @@
     (is (= (u/flatten-all [[1] [2] [3]]) [1 2 3]))
     (is (= (u/flatten-all [[1 2] [3 [4] [[5]]]]) [1 2 3 4 5]))))
 
+(deftest shorten-test
+  (is (= "apple..." (u/shorten "apple orange" 5))))
+
 (deftest binary-search-test
   (testing "binary-search"
-    (is (= 500 (u/binary-search (vec (range 500)) 500)))
-    (is (= 500 (u/binary-search (vec (range 0 1000 2)) 500)))
-    (is (= nil (u/binary-search (vec (range 500)) 501)))))
+    (is (= 499 (u/binary-search (vec (range 500)) 499)))
+    (is (= 250 (u/binary-search (vec (range 0 1000 2)) 500)))
+    (is (= nil (u/binary-search (vec (range 500)) 1000)))))
 
-(deftest shorten-test
-  (is (= "apple" (u/shorten "apple orange" 5))))
+

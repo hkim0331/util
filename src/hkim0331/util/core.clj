@@ -256,11 +256,13 @@
           (recur low middle))))))
 
 (comment
+  (binary-search (vec (range 1000)) 500)
   (let [v (vec (range 0 100000 2))]
     (time (binary-search v 50000)) ; => 0.06ms
     (time (.indexOf v 50000)) ; => 1.35ms
     (time (binary-search v 50001)) ; => 0.04ms
     (time (.indexOf v 50001)) ; => 2.14ms
     ))
+
 
 
