@@ -10,8 +10,19 @@ Under construction.
 - git/sha is determined at push time, master branch to GITHUB.
   how to reflect the :git/sha value into README.md?
 - criterium: hkim0331.util.bench requires criterium.
-- read only if https? token?
 
+
+## v0.4.93 / 2025-02-20
+
+- core/shorten (renamed from omit).
+- core/binary-search -- `.indexOf` is slow.
+- fixed: read only if https? token?
+
+```
+% git remote -v
+origin  git@github.com:hkim0331/util.git (fetch)
+origin  git@github.com:hkim0331/util.git (push)
+```
 
 ## v0.4.83 / 2025-02-18
 
@@ -44,7 +55,11 @@ Under construction.
 ## v0.4.76 / 2025-02-18
 =======
 ## v0.4.83 / 2025-02-18
+<<<<<<< HEAD
 >>>>>>> release/v0.4.83
+=======
+>>>>>>> refs/remotes/origin/develop
+>>>>>>> release/v0.4.93
 
 - changed namespace to `hkim0331.util.core` and `hkim0331.util.bench`.
 
