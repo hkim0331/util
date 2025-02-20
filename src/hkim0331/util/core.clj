@@ -263,6 +263,3 @@
     (time (binary-search v 50001)) ; => 0.04ms
     (time (.indexOf v 50001)) ; => 2.14ms
     ))
-
-
-
