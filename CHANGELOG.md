@@ -12,7 +12,7 @@ Under construction.
 - criterium: hkim0331.util.bench requires criterium.
 
 
-## v0.4-SNAPSHOT
+## v0.4.93 / 2025-02-20
 
 - core/shorten (renamed from omit).
 - core/binary-search -- `.indexOf` is slow.
