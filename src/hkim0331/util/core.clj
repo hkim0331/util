@@ -125,14 +125,14 @@
 
 ; divisors
 ; oridinaly definition
-; (defn divisors'
-;   "use divisors, which is 5 times faster than this."
-;   [n]
-;   (let [d1 (filter #(zero? (rem n %)) (range 1 (+ 1 (math/sqrt n))))
-;         d2 (map #(quot n %) (reverse d1))]
-;     (if (= (last d1) (first d2))
-;       (concat d1 (rest d2))
-;       (concat d1 d2))))
+(defn divisors'
+  "use divisors, which is 5 times faster than this."
+  [n]
+  (let [d1 (filter #(zero? (rem n %)) (range 1 (+ 1 (math/sqrt n))))
+        d2 (map #(quot n %) (reverse d1))]
+    (if (= (last d1) (first d2))
+      (concat d1 (rest d2))
+      (concat d1 d2))))
 
 (defn- factor-expand
   "(2 2 2) => (1 2 4 8)
@@ -145,9 +145,7 @@
        (partition-by identity)
        (map factor-expand)
        (apply combo/cartesian-product)
-       (map #(reduce * %))
-       ; sort
-       ))
+       (map #(reduce * %))))
 
 ; fold
 ; https://stackoverflow.com/questions/16800255/how-do-we-do-both-left-and-right-folds-in-clojure
@@ -215,7 +213,7 @@
   :rcf)
 
 ; reverse-all
-; sequencial? is the key.
+; sequential? is the key.
 (defn reverse-all [coll]
   (if (sequential? coll)
     (if (empty? coll)
