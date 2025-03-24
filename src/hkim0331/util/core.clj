@@ -3,7 +3,7 @@
             [clojure.math :as math]
             [clojure.math.combinatorics :as combo]))
 
-(defn probe
+(defn- probe
   [msg any]
   (prn msg any)
   any)
