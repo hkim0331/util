@@ -4,6 +4,8 @@ Learn how to use remote clojure libraries.
 
 forge utils in `scratch` (or the `develop` branch?) then copy them here.
 
+i want to migrate.
+
 ## Dependency
 
 ```
